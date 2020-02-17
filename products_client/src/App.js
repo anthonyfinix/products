@@ -1,15 +1,16 @@
 import React from 'react';
+import Header from './components/header';
+import Footer from './components/footer';
+import Products from './components/products';
 
 function App() {
   return (
     <div className="App">
-      <button onClick={test}>View List</button>
+      <Header />
+      <Products/>
+      <Footer/>
     </div>
   );
-}
-
-const test = () => {
-  // fetch('http://localhost:3100/nehruPlace').then(res=>res.json().then(result=>console.log(result)));
 }
 
 
