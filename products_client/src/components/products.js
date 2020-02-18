@@ -1,13 +1,14 @@
 import React from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import ListItemText from '@material-ui/core/ListItemText';
 
-const createList = ()=>{
-    
+const createList = () => {
+    fetch('http://localhost:3000/nehruPlace')
+        .then(res => {console.log(res)})
 }
 
 export default Products =>
-<div>
-    {createList}
-</div>
+    <div>
+        <button onClick={createList}>Laptop Laptops</button>
+    </div>

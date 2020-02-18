@@ -13,12 +13,24 @@ app.get('/', (req, res) => {
 
 app.get('/nehruPlace', (req, res) => {
     fetch('https://www.nehruplacemarket.com/laptop-price/laptop-price.php')
-    .then(res => res.text())
-    .then(body => {
-        $ = cheerio.load(body);
-        tables = []
-        res.send($('table').html())
-    })
+        .then(res => res.text())
+        .then(body => {
+            $ = cheerio.load(body);
+            const tr = $($('table')[1]).children('tbody').children('tr');
+            const products = []
+            const getProducts = ()=>{
+                $(tr).each((i,el)=>{
+                    let product ={}
+                    $('td',el).each((i,el)=>{
+                        product[i] = $(el).text();
+                    });
+                    products.push(product);
+
+                });
+                return products;
+            }
+            res.send(getProducts())
+        })
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
